@@ -44,6 +44,8 @@
     }
 
     handle * {
+     	header Access-Control-Allow-Origin *
+    	header Access-Control-Request-Method GET
     	reverse_proxy http://map-app:80
     }
 
