@@ -46,6 +46,12 @@ ${APP_SERVER} {
     handle * {
      	header Access-Control-Allow-Origin *
     	header Access-Control-Request-Method GET
+
+	    @old_url {
+	        path_regexp reg "/index.html.*"
+	    }
+	    rewrite @old_url /landing/{query.country}?
+
     	reverse_proxy http://openindoor-app:80
     }
 
