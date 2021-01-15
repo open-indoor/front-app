@@ -1,5 +1,5 @@
 ################ OSM TO GEOJSON #####################
-FROM caddy:2-alpine
+FROM caddy:2.3.0-alpine
 
 RUN apk add --update-cache \
     jq \
