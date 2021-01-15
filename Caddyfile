@@ -50,7 +50,7 @@ ${APP_SERVER} {
 	    @old_url {
 	        path_regexp reg "/index.html.*"
 	    }
-	    rewrite @old_url /landing/{query.country}?
+	    rewrite @old_url /oldurl/{query.country}?
 
     	reverse_proxy http://openindoor-app:80
     }
