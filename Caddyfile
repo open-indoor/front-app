@@ -9,6 +9,14 @@ ${APP_SERVER} {
         level DEBUG
     }
 
+# https://app.openindoor.io/index.html?country=france#map=18/1.446592/43.60623/0/60/0
+# https://app.openindoor.io/landing/france/-1.7030681187784467/48.11947479723537/17/51/60/0/0  
+    
+    handle /index.html?country=* {
+    	@map_app path_regexp map_app ^/index.html/?country=(.*)#map=([0-9]+)/([0-9]+([.][0-9]+)?)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$      
+        rewrite @map_app /landing/{http.regexp.mapp_app.1}/{http.regexp.mapp_app.3}/{http.regexp.mapp_app.4}/{http.regexp.mapp_app.2}/{http.regexp.mapp_app.5}/{http.regexp.mapp_app.6}/{http.regexp.mapp_app.7}/0
+    }
+
     handle /mapbox-gl-openindoor/dist/* {
         uri strip_prefix /mapbox-gl-openindoor/dist
     	reverse_proxy http://mapbox-gl-openindoor:80
