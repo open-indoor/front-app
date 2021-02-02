@@ -55,5 +55,13 @@ ${APP_SERVER} {
     	reverse_proxy http://openindoor-app:80
     }
 
+    handle /pgadmin/* {
+        uri strip_prefix /pgadmin
+    	reverse_proxy http://openindoor-pgadmin:80
+    }
 
+    handle /adminer/* {
+        uri strip_prefix /adminer
+    	reverse_proxy http://openindoor-adminer:80
+    }
 }
